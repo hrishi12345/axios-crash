@@ -1,26 +1,36 @@
 // GET REQUEST
 function getTodos() {
-  console.log('GET Request');
+  axios.get('https://jsonplaceholder.typicode.com/todos').then((a)=>
+  showOutput(a))
 }
-
+const d=
+  {
+    title: "delectus aut autem",
+    completed: true
+  }
 // POST REQUEST
 function addTodo() {
-  console.log('POST Request');
+  axios.post('https://jsonplaceholder.typicode.com/todos',d).then((a)=>
+  showOutput(a))
+  
 }
 
 // PUT/PATCH REQUEST
 function updateTodo() {
-  console.log('PUT/PATCH Request');
+  axios.patch('https://jsonplaceholder.typicode.com/todos/1',d).then((a)=>
+  showOutput(a))
 }
-
 // DELETE REQUEST
 function removeTodo() {
-  console.log('DELETE Request');
+  axios.delete('https://jsonplaceholder.typicode.com/todos/1',d).then((a)=>
+  showOutput(a))
+  
 }
 
 // SIMULTANEOUS DATA
 function getData() {
-  console.log('Simultaneous Request');
+  axios.all(axios.get('https://jsonplaceholder.typicode.com/todos'),axios.get('https://jsonplaceholder.typicode.com/posts')).then(axios.spread((a,b)=>
+  showOutput(a)))
 }
 
 // CUSTOM HEADERS
